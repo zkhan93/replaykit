@@ -1,10 +1,11 @@
+import time
+from datetime import datetime
+from pathlib import Path
+
+import pyautogui
 import typer
 import yaml
-import time
-import pyautogui
-from pathlib import Path
-from pynput import mouse, keyboard
-from datetime import datetime
+from pynput import keyboard, mouse
 from rich.console import Console
 
 app = typer.Typer(
@@ -86,7 +87,8 @@ class ActionRecorder:
             console.print(f"  [{elapsed_time:.2f}s] Move to ({x}, {y})")
         elif action_type == "scroll":
             console.print(
-                f"  [{elapsed_time:.2f}s] Scroll at ({x}, {y}) dx={scroll_dx} dy={scroll_dy}"
+                f"  [{elapsed_time:.2f}s] Scroll at ({x}, {y})"
+                f" dx={scroll_dx} dy={scroll_dy}"
             )
         elif action_type == "keydown":
             console.print(f"  [{elapsed_time:.2f}s] Key down: {key}")
@@ -245,7 +247,7 @@ def play(
         raise typer.Exit(1)
 
     # Load recording
-    with open(input_file, "r") as f:
+    with open(input_file) as f:
         recording_data = yaml.safe_load(f)
 
     actions = recording_data.get("actions", [])
@@ -286,7 +288,7 @@ def play(
             console.print(f"\n[green]Starting playback #{iteration}...[/green]")
 
             last_timestamp = 0
-            for i, action in enumerate(actions):
+            for action in actions:
                 # Calculate delay based on timestamp
                 delay_time = (action["timestamp"] - last_timestamp) / speed
                 if delay_time > 0:
@@ -438,7 +440,7 @@ def list_recordings(
 
     for recording_file in sorted(recordings):
         try:
-            with open(recording_file, "r") as f:
+            with open(recording_file) as f:
                 data = yaml.safe_load(f)
 
             console.print(f"[green]* {recording_file.name}[/green]")
@@ -460,7 +462,7 @@ def info(file: Path = typer.Argument(..., help="Path to the recording file")):
         console.print(f"[red]File not found: {file}[/red]")
         raise typer.Exit(1)
 
-    with open(file, "r") as f:
+    with open(file) as f:
         data = yaml.safe_load(f)
 
     console.print("[bold blue]Recording Information[/bold blue]")

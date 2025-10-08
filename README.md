@@ -1,5 +1,9 @@
 # ReplayKit
 
+[![CI/CD](https://github.com/zkhan93/replaykit/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/zkhan93/replaykit/actions/workflows/ci-cd.yml)
+[![PyPI version](https://badge.fury.io/py/replaykit.svg)](https://badge.fury.io/py/replaykit)
+[![Python Version](https://img.shields.io/pypi/pyversions/replaykit.svg)](https://pypi.org/project/replaykit/)
+
 A powerful Python automation tool to record and replay mouse movements, clicks, scrolls, and keyboard actions. Perfect for automating repetitive tasks, testing workflows, and creating macros!
 
 ## ✨ Features
@@ -115,7 +119,7 @@ uv tool install replaykit
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/replaykit.git
+git clone https://github.com/zkhan93/replaykit.git
 cd replaykit
 
 # Install with uv (recommended)
@@ -313,6 +317,6 @@ MIT License - Feel free to use and modify as needed!
 
 ## 🔗 Links
 
-- Documentation: [GitHub Wiki](https://github.com/yourusername/replaykit/wiki)
-- Issues: [GitHub Issues](https://github.com/yourusername/replaykit/issues)
+- Documentation: [GitHub Wiki](https://github.com/zkhan93/replaykit/wiki)
+- Issues: [GitHub Issues](https://github.com/zkhan93/replaykit/issues)
 - PyPI: [replaykit on PyPI](https://pypi.org/project/replaykit/)
